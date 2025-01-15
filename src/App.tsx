@@ -23,12 +23,12 @@ function App() {
   };
 
   const sponsors = [
-    { name: "TechCorp Global", tier: "Platinum" },
-    { name: "SportsFit Pro", tier: "Gold" },
-    { name: "Community Bank", tier: "Gold" },
-    { name: "Local Athletics", tier: "Silver" },
-    { name: "Health First", tier: "Silver" },
-    { name: "Youth Foundation", tier: "Bronze" }
+    { name: "Harmony Dental Care", tier: "Platinum" },
+    { name: "Coffee Culture", tier: "Gold" },
+    { name: "Patel Automotive Services", tier: "Gold" },
+    { name: "Nikhil & Nisha Real Estate", tier: "Silver" },
+    { name: "Sleep Town Mattress", tier: "Silver" },
+    { name: "F2 Energy", tier: "Bronze" }
   ];
 
   const navLinks = [
@@ -333,8 +333,8 @@ We envision a future where sports like Volleyball serve as a powerful platform f
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-2">
-              <Volleyball className="w-8 h-8" />
-              <span className="font-bold text-xl">Spike for Change</span>
+            <img src={Logo} alt="Logo" className="w-16 h-16" />
+              <span className="font-bold text-xl">Hariprabodham Volleyball</span>
             </div>
             <div className="flex items-center gap-2">
               <Heart className="w-5 h-5 text-orange-500" />
