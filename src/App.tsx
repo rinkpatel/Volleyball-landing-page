@@ -36,7 +36,7 @@ function App() {
     { name: "Event Details", href: "#event-details" },
     { name: "Impact", href: "#impact" },
     { name: "Sponsors", href: "#sponsors" },
-    { name: "Contact", href: "#contact" }
+    { name: "Our Vision", href: "#contact" }
   ];
 
   return (
@@ -82,7 +82,7 @@ function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Register Now
+                Contact Us!
               </motion.button>
             </nav>
 
@@ -127,7 +127,7 @@ function App() {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Register Now
+                  Contact Us!
                 </motion.button>
               </motion.nav>
             )}
@@ -153,9 +153,8 @@ function App() {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <h1 className="text-5xl font-bold mb-6">Empowering Youth Through Volleyball</h1>
-              <p className="text-xl mb-8">At the heart of our mission is a commitment to empowering youth, fostering strong connections within the community, and giving back meaningfully. This dedicated page highlights our Volleyball initiatives and the positive impact they’ve had on individuals and the community as a whole.
-</p>
+              <h1 className="text-5xl font-bold mb-6">Youth Development Through Volleyball</h1>
+              <h2 className="text-xl mb-8">Committing to the physical, mental, and emotional well-being of youth</h2>
               <motion.button 
                 className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
