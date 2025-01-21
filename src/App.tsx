@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, MapPin, Heart, Users, ArrowRight, Volleyball, Building2, Menu, X} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import BackgroundImage from '../dist/assets/volleyball-4k.png';
-import Logo from '../dist/assets/volleyball-logo.png';
+import BackgroundImage from '../src/img/volleyball-4k.png';
+import Logo from '../src/img/volleyball-logo.png';
+import CC from '../src/img/cc.png';
+import Classixhonda from '../src/img/ch.png';
+import Harmoney from '../src/img/harmoneyiq.png';
+import Harmony from '../src/img/harmony.png';
+import Patel from '../src/img/patel.png';
+import Sleep from '../src/img/sleeptown.png';
+import F2 from '../src/img/f2-logo.png';
+import hayosha from '../src/img/hayosha.png';
+import NN from '../src/img/nn-logo-dark.png';
+import bombay from '../src/img/bombayspices.png';
+import dalwadi from '../src/img/dalwadi.png';
+import greenhome from '../src/img/greenhome.png';
+import hamiltondabba from '../src/img/hamiltondabba.png';
+import jackfilled from '../src/img/jackfilled.png';
+import remax from '../src/img/remax.png';
+import planethealth from '../src/img/planetearth.png';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,12 +39,21 @@ function App() {
   };
 
   const sponsors = [
-    { name: "Harmony Dental Care", tier: "Platinum" },
-    { name: "Coffee Culture", tier: "Gold" },
-    { name: "Patel Automotive Services", tier: "Gold" },
-    { name: "Nikhil & Nisha Real Estate", tier: "Silver" },
-    { name: "Sleep Town Mattress", tier: "Silver" },
-    { name: "F2 Energy", tier: "Bronze" }
+    { name: "Harmony Dental Care", tier: "Platinum", Logo: Harmony },
+    { name: "Coffee Culture", tier: "Platinum" , Logo: CC},
+    { name: "Patel Automotive Services", tier: "Platinum" , Logo: Patel},
+    { name: "Nikhil & Neha Real Estate", tier: "Platinum" , Logo: NN},
+    { name: "Classic Honda", tier: "Gold" , Logo: Classixhonda},
+    { name: "Harmoney IQ", tier: "Gold" , Logo: Harmoney},
+    { name: "Hayosha", tier: "Gold" , Logo: hayosha},
+    { name: "Sleep Town Mattress", tier: "Silver" , Logo: Sleep},
+    { name: "F2 Energy", tier: "Silver" , Logo: F2},
+    { name: "Bombay Spices", tier: "Bronze" , Logo: bombay},
+    { name: "Green Home Consulting", tier: "Bronze" , Logo: greenhome},
+    { name: "Dalwadi Insurance Inc.", tier: "Bronze" , Logo: dalwadi},
+    { name: "Yashbhai Gandhi Realtor", tier: "Bronze" , Logo: remax},
+    { name: "Health Planet Physiotherapy", tier: "Bronze" , Logo: planethealth},
+    { name: "Hamilton Dabbawala", tier: "Trophies" , Logo: hamiltondabba},
   ];
 
   const navLinks = [
@@ -241,51 +266,56 @@ function App() {
         </div>
       </div>
 
-      {/* Sponsors Section */}
-      <div className="py-20 bg-gray-50" id="sponsors">
-        <div className="container mx-auto px-4">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Building2 className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-            <h2 className="text-4xl font-bold mb-4">Our Sponsors</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Thanks to our generous sponsors who make this event possible.
-            </p>
-          </motion.div>
-          <motion.div 
-            className="grid md:grid-cols-3 gap-8"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={{
-              initial: {},
-              animate: { transition: { staggerChildren: 0.1 } }
-            }}
-          >
-            {sponsors.map((sponsor, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow"
-              >
-                <div className={`text-sm font-semibold mb-2 ${
-                  sponsor.tier === 'Platinum' ? 'text-purple-600' :
-                  sponsor.tier === 'Gold' ? 'text-yellow-600' :
-                  sponsor.tier === 'Silver' ? 'text-gray-600' : 'text-orange-600'
-                }`}>
-                  {sponsor.tier} Sponsor
-                </div>
-                <div className="text-xl font-bold">{sponsor.name}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+       {/* Sponsors Section */}
+    <div className="py-20 bg-gray-50" id="sponsors">
+      <div className="container mx-auto px-4">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <Building2 className="w-12 h-12 text-orange-500 mx-auto mb-4" />
+          <h2 className="text-4xl font-bold mb-4">Our Sponsors</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Thanks to our generous sponsors who make this event possible.
+          </p>
+        </motion.div>
+        <motion.div 
+          className="grid md:grid-cols-3 gap-8"
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={{
+            initial: {},
+            animate: { transition: { staggerChildren: 0.1 } }
+          }}
+        >
+          {sponsors.map((sponsor, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow flex flex-col items-center"
+            >
+              <img 
+                src={sponsor.Logo} 
+                alt={sponsor.name} 
+                className="w-24 h-24 object-contain mb-4"
+              />
+              <div className={`text-sm font-semibold mb-2 ${
+                sponsor.tier === 'Platinum' ? 'text-purple-600' :
+                sponsor.tier === 'Gold' ? 'text-yellow-600' :
+                sponsor.tier === 'Silver' ? 'text-gray-600' : 'text-orange-600'
+              }`}>
+                {sponsor.tier} Sponsor
+              </div>
+              <div className="text-xl font-bold text-center">{sponsor.name}</div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
+    </div>
 
       {/* CTA Section */}
       <div className="bg-orange-500 py-20" id="contact">
