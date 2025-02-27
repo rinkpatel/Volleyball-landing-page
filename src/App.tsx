@@ -19,6 +19,19 @@ import hamiltondabba from '../src/img/hamiltondabba.png';
 import jackfilled from '../src/img/jackfilled.png';
 import remax from '../src/img/remax.png';
 import planethealth from '../src/img/planetearth.png';
+import radika from '../src/img/radhika.png';
+import dentalvibe from '../src/img/Dental Vibe.png';
+import SMotiram from '../src/img/SMotiram.png';
+import Skyline from '../src/img/skyline.png';
+import TravelLodge from '../src/img/travelodge.png';
+import BritishSwim from '../src/img/britishswim.png';
+import Naman from '../src/img/namanelectric.png';
+import SignatureBlinds from '../src/img/signatureblinds.png';
+import HarProd from '../src/img/harprod.png';
+import Perx from '../src/img/perx.jpeg';
+import Kitimai from '../src/img/kitimai.jpg';
+import MrKhaman from '../src/img/khaman.png';
+
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,10 +52,34 @@ function App() {
   };
 
   const sponsors = [
-    { name: "Harmony Dental Care", tier: "Platinum", Logo: Harmony },
+    // Diamond Tier
+    { name: "Nikhil Realtor", tier: "Diamond", Logo: NN, contact: "416-417-8955" },
+    { name: "Dental Vibe", tier: "Diamond", Logo: dentalvibe, contact: "647-568-3875" },
+    { name: "S Motiram", tier: "Diamond", Logo: SMotiram, contact: "587-596-6663" },
+    { name: "Harmony Dental Clinic", tier: "Diamond", Logo: Harmony, contact: "647-381-9294" },
+    { name: "Skyline Leadership & Development", tier: "Diamond", Logo: Skyline },
+    { name: "Travel Lodge", tier: "Diamond", Logo: TravelLodge },
+
+    // Platinum Tier
+    { name: "Naman Electric", tier: "Platinum", Logo: Naman, contact: "647-401-1264" },
+    { name: "Patel Automotive Services", tier: "Platinum", Logo: Patel, contact: "647-686-5664" },
+    { name: "Harmony Production", tier: "Platinum", Logo: HarProd },
+    { name: "Permit Xpert", tier: "Platinum", Logo: Perx, contact: "437-998-0369" },
+
+    // Gold Tier
+    { name: "Signature Blinds", tier: "Gold", Logo: SignatureBlinds, contact: "647-676-3087" },
+    { name: "British Swim School", tier: "Gold", Logo: BritishSwim, contact: "416-559-9844" },
+
+    // Silver Tier
+    { name: "Mr.Khaman", tier: "Silver", Logo: MrKhaman, contact: "705-927-3929" },
+
+    // Additional Listings
+    { name: "RBC Mortgage", tier: "Web", Logo: radika, contact: "647-637-7404" },
+    { name: "Kitimai", tier: "Web", Logo: Kitimai },
+
+    // ...existing sponsors...
     { name: "Coffee Culture", tier: "Platinum" , Logo: CC},
     { name: "Patel Automotive Services", tier: "Platinum" , Logo: Patel},
-    { name: "Nikhil & Neha Real Estate", tier: "Platinum" , Logo: NN},
     { name: "Classic Honda", tier: "Gold" , Logo: Classixhonda},
     { name: "Harmoney IQ", tier: "Gold" , Logo: Harmoney},
     { name: "Hayosha", tier: "Gold" , Logo: hayosha},
@@ -53,8 +90,59 @@ function App() {
     { name: "Dalwadi Insurance Inc.", tier: "Bronze" , Logo: dalwadi},
     { name: "Yashbhai Gandhi Realtor", tier: "Bronze" , Logo: remax},
     { name: "Health Planet Physiotherapy", tier: "Bronze" , Logo: planethealth},
+    { name: "Radika", tier: "Bronze" , Logo: radika},
     { name: "Hamilton Dabbawala", tier: "Trophies" , Logo: hamiltondabba},
   ];
+
+  const TIER_ORDER = [
+    'Diamond',
+    'Platinum',
+    'Gold',
+    'Silver',
+    'Bronze',
+    'Web',
+    'Trophies'
+  ];
+
+  const groupedSponsors = sponsors.reduce((acc, sponsor) => {
+    if (!acc[sponsor.tier]) {
+      acc[sponsor.tier] = [];
+    }
+    acc[sponsor.tier].push(sponsor);
+    return acc;
+  }, {});
+
+  const SponsorSection = ({ tier, sponsors }) => (
+    <motion.div
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      variants={fadeInUp}
+      className="mb-8"  // Reduced from mb-12
+    >
+      <h3 className="text-xl font-bold text-primary mb-4 text-center">
+        {tier} Sponsors
+      </h3>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {sponsors.map((sponsor) => (
+          <motion.div
+            key={sponsor.name}
+            whileHover={{ scale: 1.05 }}
+            className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center"
+          >
+            <div className="h-32 w-32 mb-2 flex items-center justify-center">
+              <img
+                src={sponsor.Logo}
+                alt={`${sponsor.name} logo`}
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
+            <h4 className="text-sm font-semibold text-gray-800 text-center">{sponsor.name}</h4>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
 
   const navLinks = [
     { name: "About", href: "#about" },
@@ -267,55 +355,18 @@ function App() {
       </div>
 
        {/* Sponsors Section */}
-    <div className="py-20 bg-gray-50" id="sponsors">
+    <section id="sponsors" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <Building2 className="w-12 h-12 text-orange-500 mx-auto mb-4" />
-          <h2 className="text-4xl font-bold mb-4">Our Sponsors</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Thanks to our generous sponsors who make this event possible.
-          </p>
-        </motion.div>
-        <motion.div 
-          className="grid md:grid-cols-3 gap-8"
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
-          variants={{
-            initial: {},
-            animate: { transition: { staggerChildren: 0.1 } }
-          }}
-        >
-          {sponsors.map((sponsor, index) => (
-            <motion.div
-              key={index}
-              variants={fadeInUp}
-              className="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow flex flex-col items-center"
-            >
-              <img 
-                src={sponsor.Logo} 
-                alt={sponsor.name} 
-                className="w-24 h-24 object-contain mb-4"
-              />
-              <div className={`text-sm font-semibold mb-2 ${
-                sponsor.tier === 'Platinum' ? 'text-purple-600' :
-                sponsor.tier === 'Gold' ? 'text-yellow-600' :
-                sponsor.tier === 'Silver' ? 'text-gray-600' : 'text-orange-600'
-              }`}>
-                {sponsor.tier} Sponsor
-              </div>
-              <div className="text-xl font-bold text-center">{sponsor.name}</div>
-            </motion.div>
+        <h2 className="text-4xl font-bold text-center mb-12">Our Sponsors</h2>
+        {Object.entries(groupedSponsors)
+          .sort(([tierA], [tierB]) => {
+            return TIER_ORDER.indexOf(tierA) - TIER_ORDER.indexOf(tierB);
+          })
+          .map(([tier, sponsorList]) => (
+            <SponsorSection key={tier} tier={tier} sponsors={sponsorList} />
           ))}
-        </motion.div>
       </div>
-    </div>
+    </section>
 
       {/* CTA Section */}
       <div className="bg-orange-500 py-20" id="contact">
